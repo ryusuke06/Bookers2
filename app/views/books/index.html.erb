@@ -1,0 +1,39 @@
+<% if flash[:error] %>
+  <h2>errorが発生しました。</h2>
+  <p><%= flash[:error] %></p>
+<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <!-- ローカル変数にインスタンス定数を代入 -->
+      <%= render 'users/list', user: @user, book_new: @book_new  %>
+    </div>
+    <div class="col-lg-8">
+      <h2>Books</h2>
+      <table width="80%">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
+        </thead>
+        <!-- ブック展開用コード-->
+        <% @books.each do |book| %>
+        <tbody>
+          <tr>
+            <td>
+              <div class="user-edit-image">
+                <!-- モデル名@userが人が変われば画像も変わるか　後で検証 -->
+                <%= attachment_image_tag @user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg"%>
+              </div>
+            </td>
+            <td><%= link_to book.title, book_path(book.id) %></td>
+            <td><%= book.body %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

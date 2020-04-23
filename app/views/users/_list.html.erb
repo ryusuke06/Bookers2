@@ -1,15 +1,16 @@
-<% if book_new.errors.any? %>
+<!--　ブックの新規投稿のエラー文表示コード 部分テンプレートに入れるとすごくめんどくさい -->
+<!--< if book.errors.any? %>
   <div id="error_explanation">
-    <h2><%= book_new.errors.count %>件のエラーが発生しました。</h2>
+    <h2><= book.errors.count %>件のエラーが発生しました。</h2>
     <ul>
-    <% book_new.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
+    < book.errors.full_messages.each do |message| %>
+    <li><= message %></li>
+    < end %>
     </ul>
   </div>
-<% end %>
+< end %>-->
 <div>
-  <h2>User Info</h2>
+  <h2>User info</h2>
   <%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
   <table width="80%">
     <thead>
@@ -28,12 +29,20 @@
       <p><%= link_to "Edit", edit_user_path(user),class: "btn btn-lg btn-block btn-base-1 mt-20" %></p>
     <% end %>
 </div>
+<!--　ブックの新規投稿用コード -->
 <div>
-  <h2>New Book</h2>
-  <% form_for (book) do |f| %>
-  <p><b>Title</b></p>
-  <%= f.text_field :title %>
-  <p><b>Opinion</b></p>
-  <%= f.text_area :body %>
-  <%= f.submit "Create Book", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+  <h2>New book</h2>
+  <%= form_for(book_new) do |f| %>
+    <div class="form-group has-icon">
+      <label for="inputEmail">Title</label>
+      <%= f.text_field :title, autofocus: true, class:"form-control" %>
+      <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
+    </div>
+    <div class="form-group has-icon">
+      <label for="inputEmail">Opinion</label>
+      <%= f.text_area :body, autofocus: true, class:"form-control" %>
+      <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
+    </div>
+    <%= f.submit "Create Book", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+  <% end %>
 </div>
