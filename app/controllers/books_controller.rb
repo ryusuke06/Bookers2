@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-	before_action :authenticate_user!, only: [:edit, :destroy] #ログイン中のユーザーのみが指定アクションをできるようにする
+	before_action :authenticate_user!, only: [:edit, :destroy, :index, :show] #ログイン中のユーザーのみが指定アクションをできるようにする
   def index
   	@books = Book.all
     @user = User.find(current_user.id)
@@ -16,6 +16,11 @@ class BooksController < ApplicationController
 
   def edit
   	@book = Book.find(params[:id])
+    if @book.user_id == current_user.id
+      render :edit
+    else
+      redirect_to books_path
+    end
   end
 
   def update
