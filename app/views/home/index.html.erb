@@ -1,25 +1,43 @@
 <%= flash[:notice] %>
-<h1>Welcome to Bookers</h1>
-<p>In <b>Bookers</b>,<br>
+<div class="container">
+  <div class="row">
+  	<div class="top-message col-md-offset-3 col-md-6">
+      <h1>Welcome to Bookers</h1>
+      <p>In <b>Bookers</b>,<br>
 
-you can share and exchange your opinions , inpressions , and emotions<br>
+      you can share and exchange your opinions , inpressions , and emotions<br>
 
-about various books!</p>
+      about various books!</p>
+    </div>
+  </div>
+  <% if user_signed_in? %>
+    <div class="row">
+      <div class="col-xs-3"></div>
+      <div class="col-xs-6">
+        <%= link_to "Log in", user_path(current_user.id), class: "btn btn-lg btn-block btn-base-1 mt-20 btn-info" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3"></div>
+      <div class="col-xs-6">
+        <%= link_to 'Sign Up', user_path(current_user.id), class: "btn btn-lg btn-block btn-base-1 mt-20 btn-success" %>
+      </div>
+    </div>
 
-<% if user_signed_in? %>
-<div class="actions">
-  <%= link_to "Log in", user_path(current_user.id), class: "btn btn-lg btn-block btn-base-1 mt-20" %>
+  <% else %>
+
+
+    <div class="row">
+      <div class="col-xs-3"></div>
+      <div class="col-xs-6">
+        <%= link_to "Log in", new_user_session_path, class: "btn btn-lg btn-block btn-base-1 mt-20 btn-info" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3"></div>
+      <div class="col-xs-6">
+        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-block btn-base-1 mt-20 btn-success" %>
+      </div>
+    </div>
+  <% end %>
 </div>
-<div class="actions">
-  <%= link_to 'Sign Up', user_path(current_user.id), class: "btn btn-lg btn-block btn-base-1 mt-20" %>
-</div>
-
-<% else %>
-
-<div class="actions">
-  <%= link_to "Log in", new_user_session_path, class: "btn btn-lg btn-block btn-base-1 mt-20" %>
-</div>
-<div class="actions">
-  <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-block btn-base-1 mt-20" %>
-</div>
-<% end %>

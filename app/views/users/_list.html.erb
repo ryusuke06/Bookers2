@@ -26,7 +26,7 @@
   	</tbody>
   </table>
 
-      <p><%= link_to "Edit", edit_user_path(user),class: "btn btn-lg btn-block btn-base-1 mt-20" %></p>
+      <p><%= link_to "Edit", edit_user_path(user), class: "btn btn-lg btn-block btn-base-1 mt-20 btn-default " %></p>
 
 </div>
 <!--　ブックの新規投稿用コード -->
@@ -43,6 +43,6 @@
       <%= f.text_area :body, autofocus: true, class:"form-control" %>
       <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
     </div>
-    <%= f.submit "Create Book", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+    <%= f.submit "Create Book", class: "btn btn-lg btn-block btn-base-1 mt-20 btn-primary" %>
   <% end %>
 </div>
