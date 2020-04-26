@@ -9,12 +9,12 @@
     </div>
     <div class="col-xs-9">
       <h2>Book detail</h2>
-      <table width="80%">
+      <table width="80%" class="table">
         <thead>
           <tr>
             <th></th>
-            <th>Title</th>
-            <th>Opinion</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@
             <td>
               <div class="user-edit-image">
                 <%= link_to user_path(@book.user_id) do %>
-                <%= attachment_image_tag @user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg"%>
+                <%= attachment_image_tag @user, :profile_image, size:"30x30", fallback: "no_image.jpg"%>
                 <%= @book.user.name %>
                 <% end %>
               </div>
@@ -30,8 +30,8 @@
             <td><%= link_to @book.title, book_path(@book.id) %></td>
             <td><%= @book.body %></td>
             <% if @user.id == current_user.id %>
-            <th><%= link_to "Edit", edit_book_path(@book.id),class: "btn btn-lg btn-block btn-base-1 mt-20" %></th>
-            <th><%= link_to "Destroy", book_path(@book.id), method: :delete,data: {confirm: "本当に削除しますか？"}, class: "btn btn-lg btn-block btn-base-1 mt-20" %></th>
+            <th><%= link_to "Edit", edit_book_path(@book.id),class: "btn btn-success" %></th>
+            <th><%= link_to "Destroy", book_path(@book.id), method: :delete,data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %></th>
             <% end %>
           </tr>
         </tbody>

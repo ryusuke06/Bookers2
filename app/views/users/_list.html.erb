@@ -11,8 +11,8 @@
 < end %>-->
 <div>
   <h2>User info</h2>
-  <%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
-  <table width="80%">
+  <%= attachment_image_tag user, :profile_image, size:"60x60", format: 'jpeg', fallback: "no_image.jpg" %>
+  <table width="80%" class="table">
     <thead>
   	  <tr>
   	    <th><b>name</b></th>
